@@ -7,6 +7,8 @@ public class Main {
             game.startGame();
         } catch (ErrorValidInput | ErrorPossibleSymbols | ErrorInputValidSecretCode error) {
             System.out.println(error.getMessage());
+        } catch (NumberFormatException error){
+            System.out.println(error.getMessage());
         }
     }
 }

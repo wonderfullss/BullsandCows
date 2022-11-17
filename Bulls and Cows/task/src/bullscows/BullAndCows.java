@@ -32,9 +32,16 @@ public class BullAndCows {
 
     public void startGame() throws ErrorValidInput, ErrorPossibleSymbols, ErrorInputValidSecretCode {
         System.out.println("Please, enter the secret code's length:");
-        number = Integer.parseInt(scan.nextLine());
-        if (number <= 0)
-            throw new ErrorInputValidSecretCode("Error: " + number + " isn't a valid number.");
+        String inputLength = scan.nextLine();
+        try {
+            number = Integer.parseInt(inputLength);
+            if (number <= 0) {
+                throw new ErrorInputValidSecretCode("Error: " + number + " isn't a valid number.");
+            }
+        } catch (Exception expect) {
+            System.out.println("Error: " + inputLength + " isn't a valid number.");
+            return;
+        }
         System.out.println("Input the number of possible symbols in the code:");
         int temp = Integer.parseInt(scan.nextLine());
         if (temp < number)
