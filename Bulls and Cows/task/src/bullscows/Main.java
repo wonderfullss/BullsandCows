@@ -1,8 +1,12 @@
 package bullscows;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ErrorValidInput, ErrorPossibleSymbols, ErrorInputValidSecretCode {
         BullAndCows game = new BullAndCows();
-        game.startGame();
+        try {
+            game.startGame();
+        } catch (ErrorValidInput | ErrorPossibleSymbols | ErrorInputValidSecretCode error) {
+            System.out.println(error.getMessage());
+        }
     }
 }
